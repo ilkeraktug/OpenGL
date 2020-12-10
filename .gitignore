@@ -1,3 +1,14 @@
+#Files
+/bin/
+/bin-int/
+.vs/
+
+#project files
+*.sln
+*.filters
+*.user
+**.vcxproj
+
 # Prerequisites
 *.d
 
