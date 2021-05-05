@@ -353,7 +353,15 @@ namespace test {
 
         ImGui::SliderFloat3("LightPosition", &m_LightPosition.x, -50.0f, 50.0f);
         if (ImGui::Button("Reset"))
-            m_LightPosition = glm::vec3(-2.0f, 4.0f, -1.0f);
+        {
+            CubeTranslationA = glm::vec3(4.0f, -3.5f, -27.0);
+            CubeTranslationB = glm::vec3(2.0f, 3.0f, -24.0);
+            CubeTranslationC = glm::vec3(7.0f, -1.0f, -22.0);
+
+            PlaneTranslationA = glm::vec3(-1.0f, -4.0f, -27.0f);
+
+            m_LightPosition = glm::vec3(-12.0f, -1.0f, -40.0f);
+        }
 
         ImGui::End();
         camera.OnImGuiRender();

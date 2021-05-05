@@ -134,6 +134,4 @@ void main()
 
 	vec3 outColor = (ambient + (1.0 - pointLightShadow(fs_in.FragPos, bias)) * (diffuse + specular)) * texColor;
 	color = vec4(outColor, 1.0f);
-
-	//color = vec4(texture(cubeDepthTexture, fragVector).r, 1.0f, 0.0f, 1.0f);
 }

@@ -2,7 +2,7 @@
 
 #include <array>
 #include "Renderer.h"
-#include "stb_img\stb_image.h"
+#include "stb/stb_image.h"
 
 class CubeMap {
 public:

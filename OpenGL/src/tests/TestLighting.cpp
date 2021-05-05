@@ -13,6 +13,7 @@ namespace test {
         glEnable(GL_DEPTH_TEST);
 		m_VertexArray = std::make_unique<VertexArray>();
         float vertices[] = {
+        //Position            //Normal             //TexCoords
         -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  0.0f,  0.0f,
          0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  0.0f,
          0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,  1.0f,  1.0f,
@@ -78,8 +79,6 @@ namespace test {
 
         m_objectDiffuse = std::make_unique<Texture>("res/textures/container_diffuse.png");
         m_objectSpecular = std::make_unique<Texture>("res/textures/container_specular.png");
-
-        //u_Model = std::make_unique<obj::Model>("res/obj/backpack/backpack.obj");
 	}
 
 	TestLighting::~TestLighting()
@@ -134,7 +133,6 @@ namespace test {
 
             glm::vec3 camPos = camera.GetCameraPosition();
             glm::vec3 camFr = camera.GetCameraFront();
-            //m_ObjectShader->SetUniform4f("u_DirLight.Position", camPos.x, camPos.y, camPos.z, 1.0f);
             m_ObjectShader->SetUniform4f("u_DirLight.Direction", 0.0f, -1.0f, 0.0f, 0.0f);
             m_ObjectShader->SetUniformVec3f("u_DirLight.Ambient", lightProporties[0]);
             m_ObjectShader->SetUniformVec3f("u_DirLight.Diffuse", lightProporties[1]);
@@ -183,13 +181,20 @@ namespace test {
 	void TestLighting::OnImGuiRender()
 	{
         ImGui::Begin("Translation");
-        ImGui::SliderFloat3("Translation A", &translationA.x, -10.0f, 10.0f);
-        ImGui::SliderFloat3("Translation B", &translationB.x, -10.0f, 10.0f);
+        ImGui::SliderFloat3("DirecLight Pos", &translationA.x, -10.0f, 10.0f);
+        ImGui::SliderFloat3("Cube Pos", &translationB.x, -10.0f, 10.0f);
         ImGui::SliderFloat("Light Ambient", &lightAmbient, 0.0f, 1.0f);
         ImGui::SliderFloat("Light Diffuse", &lightDiffuse, 0.0f, 1.0f);
         ImGui::SliderFloat("Light Specular", &lightSpecular, 0.0f, 1.0f);
         ImGui::ColorEdit4("Light Color", &m_LightColor.x);
-        ImGui::ColorEdit4("Square Color", &m_ObjectColor.x);
+
+        if (ImGui::Button("Reset"))
+        {
+            translationB = glm::vec3(-0.5f, 0.5f, -3.5f);
+
+            lightAmbient = 0.15f;
+        }
+
         camera.OnImGuiRender();
         ImGui::Text("%f", ImGui::GetIO().Framerate);
         ImGui::End();

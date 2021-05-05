@@ -1,15 +1,15 @@
-[submodule "OpenGL\\vendor\\GLFW"]
-	path = OpenGL\\vendor\\GLFW
-	url = https://github.com/glfw/glfw.git
-[submodule "OpenGL\\vendor\\imgui"]
-	path = OpenGL\\vendor\\imgui
-	url = https://github.com/ocornut/imgui.git
-[submodule "OpenGL\\vendor\\glm"]
-	path = OpenGL\\vendor\\glm
+[submodule "OpenGL/vendor/GLFW"]
+	path = OpenGL/vendor/GLFW
+	url = https://github.com/ilkeraktug/glfw.git
+[submodule "OpenGL/vendor/imgui"]
+	path = OpenGL/vendor/imgui
+	url = https://github.com/ilkeraktug/imgui.git
+[submodule "OpenGL/vendor/glm"]
+	path = OpenGL/vendor/glm
 	url = https://github.com/g-truc/glm.git
-[submodule "OpenGL\\vendor\\stb"]
-	path = OpenGL\\vendor\\stb
+[submodule "OpenGL/vendor/stb"]
+	path = OpenGL/vendor/stb
 	url = https://github.com/nothings/stb.git
-[submodule "OpenGL\\vendor\\assimp"]
-	path = OpenGL\\vendor\\assimp
+[submodule "OpenGL/vendor/assimp"]
+	path = OpenGL/vendor/assimp
 	url = https://github.com/assimp/assimp.git

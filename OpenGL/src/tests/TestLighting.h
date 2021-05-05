@@ -37,10 +37,10 @@ namespace test {
 
 		std::unique_ptr<Camera> m_Camera;
 
-		glm::vec3 translationA;
-		glm::vec3 translationB;
+		glm::vec3 translationA = glm::vec3(0.0f);
+		glm::vec3 translationB = glm::vec3(-0.5f, 0.5f, -3.5f);
 
-		float lightAmbient = 1.0f;
+		float lightAmbient = 0.15f;
 		float lightDiffuse = 1.0f;
 		float lightSpecular = 1.0f;
 

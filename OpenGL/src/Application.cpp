@@ -25,6 +25,7 @@
 #include "tests\Camera.h"
 #include "tests\TestAdvanced.h"
 #include "tests\TestShadows.h"
+#include "tests\TestCubeMap.h"
 
 int main(void)
 {
@@ -34,8 +35,8 @@ int main(void)
     if (!glfwInit())
         return -1;
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
    
     window = glfwCreateWindow(1280, 768, "Hello World", NULL, NULL);
@@ -64,13 +65,17 @@ int main(void)
     test::Test* currentTest = new test::Test();
     test::TestMenu* testMenu = new test::TestMenu(currentTest);
 
-    //testMenu->RegisterMenu<test::TestClearColor>("Clear Color");
-    //testMenu->RegisterMenu<test::TestTexture2D>("Texture2D");
-    //testMenu->RegisterMenu<test::TestLighting>("Lighting");
-    //testMenu->RegisterMenu<test::TestAdvanced>("Advanced");
-    //testMenu->RegisterMenu<test::TestShadows>("Shadows");
+    GLenum m_RendererID;
+    glCreateVertexArrays(1, &m_RendererID);
+
+    testMenu->RegisterMenu<test::TestClearColor>("Clear Color");
+    testMenu->RegisterMenu<test::TestTexture2D>("Texture2D");
+    testMenu->RegisterMenu<test::TestLighting>("Lighting");
+    testMenu->RegisterMenu<test::TestAdvanced>("ShadowMap");
+    testMenu->RegisterMenu<test::TestCubeMap>("CubeMap");
+    testMenu->RegisterMenu<test::TestShadows>("Model");
     //currentTest = testMenu->GetWindow<test::TestShadows>();
-    //currentTest = testMenu;
+    currentTest = testMenu;
     //currentTest = testMenu->GetWindowAssimp<test::TestAssimp>("res/obj/backpack.obj");
 
     while (!glfwWindowShouldClose(window))

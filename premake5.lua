@@ -15,12 +15,12 @@ IncludeDir["glad"] =	"OpenGL/vendor/glad/include"
 IncludeDir["GLFW"] =	"OpenGL/vendor/GLFW/include" 
 IncludeDir["glm"] =		"OpenGL/vendor/glm" 
 IncludeDir["imgui"] =   "OpenGL/vendor/imgui" 
-IncludeDir["stb"] =		"OpenGL/vendor/stb" 
+IncludeDir["stb"] =		"OpenGL/vendor" 
 IncludeDir["assimp"] =  "OpenGL/vendor/assimp/include" 
 
 include "OpenGL/vendor/glad"
 include "OpenGL/vendor/GLFW"
---include "OpenGL/vendor/imgui"
+include "OpenGL/vendor/imgui"
 
 	project "OpenGL"
 		location "OpenGL"
@@ -35,8 +35,6 @@ include "OpenGL/vendor/GLFW"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
-		"%{prj.name}/vendor/imgui/**.h",
-		"%{prj.name}/vendor/imgui/**.cpp"
 	}
 	
 	defines
@@ -55,12 +53,18 @@ include "OpenGL/vendor/GLFW"
 		"%{IncludeDir.assimp}"
 	}
 
+	libdirs
+	{
+		"%{prj.name}/vendor/assimp/lib/Debug"
+	}
+
 	links
 	{
 		"glad",
 		"GLFW",
 		"ImGui",
-		"opengl32.lib"
+		"opengl32.lib",
+		"assimp-vc142-mtd.lib"
 	}
 
 	filter "system:windows"
